@@ -1,4 +1,4 @@
-module github.com/wnAlex/GoLearning
+module github.com/wnAlex/Golearning
 
 go 1.19
 

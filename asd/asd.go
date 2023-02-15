@@ -1,7 +1,7 @@
-package asd
+package Asd
 
 import "fmt"
 
-func asd() {
+func Asd() {
 	fmt.Println("asdsadas")
 }
