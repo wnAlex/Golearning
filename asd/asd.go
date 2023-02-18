@@ -3,5 +3,8 @@ package Asd
 import "fmt"
 
 func Asd() {
-	fmt.Println("asdsadas")
+	fmt.Println("aweqeqwsdsadas")
+	fmt.Println("aweqeqwsdsadas")
+	fmt.Println("aweqeqwsdsadas")
+
 }
