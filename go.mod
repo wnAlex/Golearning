@@ -1,4 +1,4 @@
-module wqeqweq
+module github.com/wnAlex/Golearning
 
 go 1.19
 
