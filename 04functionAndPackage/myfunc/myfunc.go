@@ -1,6 +1,18 @@
 package myfunc
 
-import "errors"
+import (
+	"errors"
+)
+
+var Name string
+var Age int
+
+func init() {
+
+	Name = "Alex"
+	Age = 24
+	//fmt.Println("myfunc init:", Name, Age)
+}
 
 func Cal(n1 float64, n2 float64, n3 string) (float64, error) {
 
