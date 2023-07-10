@@ -1,4 +1,8 @@
-package asd
+package github
+
+import "fmt"
+
+.com/wnAlex/Golearning/asd
 
 import (
 	"fmt"
