@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"github.com/wnAlex/Golearning/04functionAndPackage/myfunc"
 	"github.com/wnAlex/Golearning/04functionAndPackage/myfunc2"
@@ -17,7 +18,6 @@ func test01() {
 	} else {
 		fmt.Println(res)
 	}
-
 }
 func cal(n1 int, n2 int) *int {
 	n3 := n1 + n2
@@ -115,7 +115,7 @@ func test07() {
 	//type myint int
 	//var n1 int = 40
 	//var n2 myint = 50
-	//n1 = n2
+	//n1 =int(n2)
 
 	res := funcpara2(getAdd, 500, 600)
 	fmt.Println(res)
@@ -262,10 +262,70 @@ func test15() {
 			}
 		}
 	}
+
+}
+func test16() {
+
+	num1 := 10
+	fmt.Printf("numtype=%T,num1=%v,&num1=%v\n", num1, num1, &num1)
+	num2 := new(int)
+	fmt.Printf("num2type=%T,num2=%v,&num2=%v,*num2=%v\n", num2, num2, &num2, *num2)
+	*num2 = 100
+	fmt.Printf("num2type=%T,num2=%v,&num2=%v,*num2=%v\n", num2, num2, &num2, *num2)
+
+}
+func testerr(n1 float64, n2 float64) (res float64, err error) {
+	if n2 == 0 {
+		return -1, errors.New("除数不可以为0")
+	}
+	return n1 / n2, nil
+}
+
+func testerr2(n1 float64, n2 float64) (res float64) {
+	defer func() {
+		err := recover()
+		if err != nil {
+			fmt.Println(err)
+		}
+	}()
+	if n2 == 0 {
+		panic("除数不能为0")
+	}
+	return n1 / n2
+}
+func test17() {
+	n1 := 10.0
+	n2 := 0.0
+	//return error
+	res, err := testerr(n1, n2)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("res is ", res)
+	}
+
+	//defer+panic+recover
+	res2 := testerr2(n1, n2)
+	fmt.Println(res2)
+}
+func funcB() {
+	fmt.Println("func bbbb")
+}
+func funcC() {
+	//str := recover()
+	//fmt.Println(str)
+	fmt.Println("func cccc")
+}
+func test18() {
+	defer funcB()
+	defer funcC()
+	//fmt.Println("test18")
+	panic("panicA")
+
 }
 func main() {
 	//函数基本用法
-	//test01()
+	test01()
 
 	//函数返回值
 	//test02()
@@ -307,5 +367,14 @@ func main() {
 	//test14()
 
 	//defer与return
-	test15()
+	//test15()
+
+	//new函数
+	//test16()
+
+	//错误机制
+	//test17()
+
+	//defer原理刨析
+	//test18()
 }

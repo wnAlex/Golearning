@@ -154,7 +154,7 @@ func test05() {
 	fmt.Printf("str5 type =%T,value=%d\n", str5, str5)
 
 	//返回类型是int64，bitsize存在的作用就是在转换过程中做了限制，如果是8，那么转化最大值就是127，然后把这个结果放在int64中返回。
-	str6, err := strconv.ParseInt("10.1123", 10, 32)
+	str6, err := strconv.ParseInt("1011111111111111", 10, 8)
 	if err != nil {
 		fmt.Println("err:", err)
 	}
@@ -168,6 +168,30 @@ func test05() {
 	fmt.Printf("str7 type =%T,value=%v\n", str7, str7)
 }
 
+const (
+	BEIJING  = 1
+	SHANGHAI = 2
+	SHENZHEN = 3
+)
+const (
+	a, b = iota * 10, iota*10 + 1
+	c, d
+	e, f
+	g, h = iota * 3, iota*3 + 1
+	i, j
+)
+
+func test06() {
+	fmt.Println(BEIJING)
+	fmt.Println(SHANGHAI)
+	fmt.Println(SHENZHEN)
+	fmt.Println("---------")
+	fmt.Println(a, b)
+	fmt.Println(c, d)
+	fmt.Println(e, f)
+	fmt.Println(g, h)
+	fmt.Println(i, j)
+}
 func main() {
 	//变量的定义
 	//test01()
@@ -184,4 +208,6 @@ func main() {
 	//基本数据类型转换
 	//test05()
 
+	//const iota
+	test06()
 }
